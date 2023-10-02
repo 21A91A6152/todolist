@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        ul{
+            list-style-type: none;
+          
+        }
+        li{
+            margin-top: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-2" >
+            <div class="col-10">
+                <h1>Product Details</h1>
+            </div>
+            <div class="col-2"><button class="btn btn-info p-2 col-12" onclick="add()">add</button></div>
+        </div>
+      
+        <div class="row mt-2">
+             
+                <div class="col-3 text-center border"><h6>Product Id</h6></div>
+                <div class="col-3 text-center border"><h6>Name</h6></div>
+                <div class="col-3 text-center border"><h6>Price</h6></div>
+                <div class="col-3 text-center border"><h6>Actions</h6></div>
+             
+                <ul id="taskList"></ul>
+        </div>   
+         
+    </div>
+    <script>
+        const taskList = document.getElementById("taskList");
+        function add()
+        {
+            const taskText1 = "<input type='text' class='col-3 me-1'  >";
+            const taskText2="<input type='text' class='col-3 me-1'  >";
+            const taskText3= "<input type='text' class='col-3 me-1'  >";
+            const li = document.createElement("li");
+            li.innerHTML = `
+                ${taskText1}${taskText2}${taskText3}
+                <button class="btn ms-5"><i class="fa-solid fa-pen" style="color: #e1ff00;font-size:20px;"></i></button>
+                <button class="btn   ms-3" onclick='del()'><i class="fa-solid fa-trash" style="color: #ff0000; font-size:20px;"></i></button>
+            `;
+            taskList.appendChild(li);
+        };
+        function del()
+        {
+            if (confirm("Do you want to delete the record!") == true){
+            var lt=event.target.this
+            const listItem = event.target.closest("li");
+            taskList.removeChild(listItem);
+            }
+           
+        }
+    </script>
+</body>
+</html>
